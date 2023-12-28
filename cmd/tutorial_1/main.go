@@ -2,25 +2,32 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func main(){
-	var n int = 1000000
-	var testSlice = []int{}
-	var testSlice2 = make([]int, 0, n)
-
-	fmt.Printf("Total time without preallocation: %v\n", timeLoop(testSlice,n))
-	fmt.Printf("Total time with preallocation: %v\n", timeLoop(testSlice2,n))
-}
-
-func timeLoop(slice []int, n int) time.Duration {
-	t0:=time.Now()
-	for len(slice)<n{
-		slice = append(slice, 1)
+  var myString = []rune("résumé")
+	var indexed = myString[0]
+	fmt.Println(myString)
+	fmt.Printf("%v, %T\n", indexed, indexed)
+	for i,v := range myString{
+		fmt.Println(i,v)
 	}
-	return time.Since(t0)
 }
 
-// Total time without preallocation: 32.391625ms
-// Total time with preallocation: 2.033916ms
+// 0 114
+// 1 233
+// 3 115
+// 4 117
+// 5 109
+// 6 233
+
+// UTF-8 has variable length encoding.  é uses 2 bytes
+// range knows how to decode the string thingies properly
+
+// with runes (better fof indexing/iterating strings):
+// 0 114
+// 1 233
+// 2 115
+// 3 117
+// 4 109
+// 5 233
