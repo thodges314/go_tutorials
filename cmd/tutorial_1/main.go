@@ -37,4 +37,10 @@ func main(){
 
 	var1, var2 := 10, 20
 	fmt.Println(var1, var2)
+
+	const myConst string = "Hello World"
+	fmt.Println(myConst)
+
+	const pi float32 = 3.14159
+	fmt.Println(pi)
 }
